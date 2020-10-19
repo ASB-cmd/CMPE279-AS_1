@@ -52,7 +52,7 @@ int main(int argc, char const *argv[])
     }
 
     
-    printf("Line 55 - I am Parent with id: %d\n", getpid());
+    printf("Line 55 - I am parent with id: %d\n", getpid());
     printf("Line 56 - My uid is: %d \n", getuid());
                               //******************* Separate part that processes the data from the client ***********//////////
     // ->> Creating a child process using fork
@@ -70,7 +70,7 @@ int main(int argc, char const *argv[])
     else if (forkedProcess == 0)
     {
         setuid(99999);
-        printf("Line 73 - I am Child with id: %d of parent with id: %d \n", getpid(), getppid());
+        printf("Line 73 - I am child with id: %d of parent with id: %d \n", getpid(), getppid());
         printf("Line 74 - My uid is: %d \n", getuid());
         valread = read(new_socket, buffer, 1024);
         printf("%s\n", buffer);
@@ -80,9 +80,9 @@ int main(int argc, char const *argv[])
     else
     {
         int *stat_loc;
-        printf("Line 83 - I am Child with id: %d of parent with id: %d \n", getpid(), getppid());
+        printf("Line 83 - I am child with id: %d of parent with id: %d \n", getpid(), getppid());
         waitpid(forkedProcess, stat_loc, 0);
-        printf("Line 85 - I am Child with id: %d of parent with id: %d \n", getpid(), getppid());
+        printf("Line 85 - I am child with id: %d of parent with id: %d \n", getpid(), getppid());
     }
 
     //****** Write a code somewhere here which can help to do privilege separation *********//
